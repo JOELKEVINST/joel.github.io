@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tareas por Semanas - Programación de Aplicaciones Móviles Web</title>  
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-tasks"></i> Tareas por Semanas</h1>
+    <h2>Christian C. Turín</h2>
+    <nav>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Volver a la página principal</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div id="tareas-container">
+      <!-- Las semanas y tareas se generarán dinámicamente aquí -->
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2024 Programación de Aplicaciones Móviles Web</p>
+  </footer>
+
+  <script>
+    const tareasData = [
+      {
+        semana: 1,
+        tareas: [
+          { 
+            id: 1, 
+            descripcion: 'Las Aplicaciones', 
+            archivo: 'tareas/Las Aplicaciones.pdf', 
+            tipo: 'pdf',
+            enunciado: 'Realiza una infografía sobre un tema realizado en la semana 01 – Fundamentos de Apps Móviles. Ten en cuenta que los textos a mostrar en cada diapositiva deben ser cortos y puntualesInvestigar y presentar un informe sobre los diferentes tipos de aplicaciones móviles: nativas, híbridas y web. Incluir ventajas y desventajas de cada tipo.'
+          },          
+        ]
+      },
+      {
+        semana: 2,
+        tareas: [
+          { 
+            id: 2, 
+            descripcion: 'Flutter', 
+            archivo: 'tareas/flutter.docx', 
+            tipo: 'docx',
+            enunciado: 'Elabora un manual de instalación del lenguaje Dart.  Para el editor de código Visual Studio Code.'
+          },
+        ]
+      },
+      {
+  semana: 3,
+  tareas: [
+    { 
+      id: 3, 
+      descripcion: 'Ejercicio 1', 
+      archivo: 'tareas/ejercicio01.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Diseñe un programa en Lenguaje Dart que determine el área total (A) y el volumen (V) de un cilindro del que se conoce su radio (r) y su altura (h). Considere las siguientes fórmulas:
+
+      <ul>
+        <li><strong>Área Total (A):</strong> A = 2πr(r + h)</li>
+        <li><strong>Volumen (V):</strong> V = πr²h</li>
+      </ul>
+
+      Implementar el programa de acuerdo a las fórmulas mencionadas.
+      `
+    },
+    { 
+      id: 4, 
+      descripcion: 'Ejercicio 2', 
+      archivo: 'tareas/ejercicio02.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Un padre repartirá una cantidad de dinero entre sus cinco hijos. Cada uno recibirá una cantidad equivalente a:
+
+      <ul>
+        <li><strong>Tamar:</strong> 85% del monto recibido por Josué</li>
+        <li><strong>Josué:</strong> 27% de la cantidad a repartir</li>
+        <li><strong>Caleb:</strong> 23% del monto total recibido entre Josué y Daniel</li>
+        <li><strong>Daniel:</strong> 25% de la cantidad a repartir</li>
+        <li><strong>David:</strong> Lo que queda del dinero a repartir</li>
+      </ul>
+
+      Dada la cantidad de dinero a repartir, diseñe un programa en lenguaje Dart que determine cuánto de dinero recibirá cada hijo.
+      `
+    },
+    { 
+      id: 5, 
+      descripcion: 'Ejercicio 3', 
+      archivo: 'tareas/ejercicio03.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> La empresa "Juanito Import" SAC expondrá sus productos en una feria. La empresa considera que el monto total de dinero a invertir estará distribuido de la siguiente manera:
+
+      <ul>
+        <li><strong>Alquiler de espacio en la feria:</strong> 23%</li>
+        <li><strong>Publicidad:</strong> 7%</li>
+        <li><strong>Transporte:</strong> 26%</li>
+        <li><strong>Servicios feriales:</strong> 12%</li>
+        <li><strong>Decoración:</strong> 21%</li>
+        <li><strong>Gastos varios:</strong> 11%</li>
+      </ul>
+
+      Dado el monto total de dinero a invertir, implemente un programa que determine cuánto gastará la empresa en cada rubro.
+      `
+    }
+  ]
+}
+,
+
+      {
+  semana: 4,
+  tareas: [
+    { 
+      id: 6, 
+      descripcion: 'Ejercicio 1', 
+      archivo: 'tareas/semana04/ejercicio01.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> En una universidad, los alumnos están categorizados en cuatro categorías. 
+      A cada categoría le corresponde una pensión mensual distinta dada en la siguiente tabla:
+
+      <table>
+        <tr>
+          <th>Categoría</th>
+          <th>Pensión</th>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>S/. 550</td>
+        </tr>
+        <tr>
+          <td>B</td>
+          <td>S/. 500</td>
+        </tr>
+        <tr>
+          <td>C</td>
+          <td>S/. 460</td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td>S/. 400</td>
+        </tr>
+      </table>
+
+      Semestralmente, la universidad efectúa rebajas en las pensiones de sus estudiantes a partir del segundo ciclo en base al promedio ponderado del ciclo anterior en porcentajes dados en la tabla siguiente:
+
+      <table>
+        <tr>
+          <th>Nota Promedio</th>
+          <th>Promedio Descuento</th>
+        </tr>
+        <tr>
+          <td>0 a 13.99</td>
+          <td>No hay descuento</td>
+        </tr>
+        <tr>
+          <td>14.00 a 15.99</td>
+          <td>10%</td>
+        </tr>
+        <tr>
+          <td>16.00 a 17.99</td>
+          <td>12%</td>
+        </tr>
+        <tr>
+          <td>18.00 a 20.00</td>
+          <td>15%</td>
+        </tr>
+      </table>
+
+      Implemente una aplicación utilizando lenguaje Dart que determine cuánto de rebaja recibirá un estudiante sobre su pensión actual y a cuánto asciende su nueva pensión.
+      `
+    },
+    { 
+      id: 7, 
+    descripcion: 'Ejercicio 2', 
+  archivo: 'tareas/semana04/ejercicio02.dart', 
+  tipo: 'dart',
+  enunciado: `
+  <strong>Enunciado:</strong> El ejército nacional ha decidido hacer una jornada de ventas de libretas militares para hombres que no han definido su situación militar u otros que no son aptos para prestar el servicio.
+
+  <strong>Precios y Descuentos:</strong>
+
+  <ul>
+    <li><strong>Hombres mayores de 18 años:</strong> 
+      <ul>
+        <li>Precio: S/. 350</li>
+        <li>Descuentos:
+          <ul>
+            <li><strong>Nivel 1:</strong> 40% de descuento</li>
+            <li><strong>Nivel 2:</strong> 30% de descuento</li>
+            <li><strong>Nivel 3:</strong> 15% de descuento</li>
+            <li><strong>Otros niveles:</strong> Sin descuento</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><strong>Jóvenes con 18 años:</strong> 
+      <ul>
+        <li>Precio: S/. 200</li>
+        <li>Descuentos:
+          <ul>
+            <li><strong>Nivel 1:</strong> 60% de descuento</li>
+            <li><strong>Nivel 2:</strong> 40% de descuento</li>
+            <li><strong>Nivel 3:</strong> 20% de descuento</li>
+            <li><strong>Otros niveles:</strong> Sin descuento</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  Realizar una aplicación que tome la edad y el nivel del sistema de beneficio de un hombre y nos muestre el descuento que le hacen y su valor final a pagar.
+  `
+    },
+    { 
+      id: 8, 
+      descripcion: 'Ejercicio 3', 
+      archivo: 'tareas/semana04/ejercicio03.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Los cálculos salariales de los vendedores de una empresa se calculan de la siguiente manera:
+
+      <ul>
+        <li><strong>Sueldo básico:</strong> S/. 600</li>
+        <li><strong>Comisión:</strong> 7% del importe total vendido si es que el importe total vendido es mayor a S/. 15000; en caso contrario, 5% del importe total vendido</li>
+        <li><strong>Bonificación:</strong> S/. 25 por cada hijo si es que el número de hijos es menor a 5; en caso contrario, S/. 22 por cada hijo</li>
+        <li><strong>Sueldo bruto:</strong> La suma del sueldo básico, más la comisión y más la bonificación</li>
+        <li><strong>Descuento:</strong> 15% del sueldo bruto si es que el sueldo bruto es mayor que S/. 3500; en caso contrario, 11% del sueldo bruto</li>
+        <li><strong>Sueldo neto:</strong> La resta del sueldo bruto menos el descuento</li>
+      </ul>
+
+      Dado el importe total vendido y el número de hijos de un vendedor, diseñe un programa que determine el sueldo básico, la comisión, la bonificación, el sueldo bruto, el descuento y el sueldo neto.
+      `
+    }
+  ]
+},
+
+{
+  semana: 5,
+  tareas: [
+    { 
+      id: 7, 
+      descripcion: 'Ejercicio 1: Sumatoria de números primos en un rango', 
+      archivo: 'tareas/semana05/ejercicio01.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Escribe un programa que solicite dos números y calcule la sumatoria de los números primos que existen entre esos dos valores. Utiliza un bucle for o while para recorrer los números en el rango y verifica si son primos..     
+      `
+    },
+    { 
+      id: 8, 
+    descripcion: 'Ejercicio 2: Números de Fibonacci hasta N términos', 
+    archivo: 'tareas/semana05/ejercicio02.dart', 
+    tipo: 'dart',
+    enunciado: `
+    <strong>Enunciado:</strong> Implementa un programa que genere la secuencia de Fibonacci hasta un número n de términos ingresado por el usuario. Utiliza un bucle while o for para ir generando los números de la secuencia.
+    `
+    },
+    { 
+      id: 9, 
+      descripcion: 'Ejercicio 3: Factorial de números grandes', 
+      archivo: 'tareas/semana05/ejercicio03.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Escribe un programa que calcule el factorial de un número grande (por ejemplo, 100) utilizando estructuras repetitivas y el tipo de datos BigInteger para manejar grandes números. `
+    },
+
+    { 
+      id: 10, 
+      descripcion: 'Ejercicio 4: Inversión de un número', 
+      archivo: 'tareas/semana05/ejercicio04.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Crea un programa que invierta los dígitos de un número entero ingresado por el usuario, utilizando un bucle while para extraer y reordenar los dígitos. `
+    },
+
+    { 
+      id: 11, 
+      descripcion: 'Ejercicio 5: Suma de matrices NxN', 
+      archivo: 'tareas/semana05/ejercicio05.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Escribe un programa que solicite dos matrices de tamaño N x N (donde N es proporcionado por el usuario) y luego realice la suma de las dos matrices utilizando bucles anidados for.`
+    },
+
+    { 
+      id: 12, 
+      descripcion: 'Ejercicio 6: Número perfecto', 
+      archivo: 'tareas/semana05/ejercicio06.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Implementa un programa que encuentre y muestre todos los números perfectos entre 1 y 10,000. Un número perfecto es aquel que es igual a la suma de sus divisores propios. Usa un bucle para iterar y otro para encontrar los divisores de cada número. `
+    },
+
+    
+    { 
+      id: 13, 
+      descripcion: 'Ejercicio 7: Matriz de espiral', 
+      archivo: 'tareas/semana05/ejercicio07.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Crea un programa que imprima una matriz cuadrada de tamaño n x n en forma de espiral. Utiliza bucles anidados para recorrer las posiciones de la matriz en el orden adecuado. `
+    },
+
+    { 
+      id: 14, 
+      descripcion: 'Ejercicio 8: Verificación de un número Armstrong', 
+      archivo: 'tareas/semana05/ejercicio08.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Escribe un programa que verifique si un número de n dígitos ingresado por el usuario es un número de Armstrong (o narcisista). Utiliza un bucle for para separar y elevar cada dígito a la potencia correspondiente. `
+    },
+
+    { 
+      id: 14, 
+      descripcion: 'Ejercicio 9: Cálculo de potencias usando multiplicación repetida', 
+      archivo: 'tareas/semana05/ejercicio09.dart', 
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Crea un programa que calcule la potencia de un número usando multiplicación repetida, es decir, sin utilizar la función Math.pow(). El programa debe solicitar una base y un exponente, y luego calcular la potencia utilizando un bucle while o for. `
+    },
+
+  ]
+},
+
+{
+        semana: 6,
+        tareas: [
+          { 
+            id: 15, 
+            descripcion: 'Actividad 01', 
+            archivo: 'tareas/semana06/actividad01.dart', 
+            tipo: 'dart',
+            enunciado: `Una empresa paga a sus vendedores un sueldo bruto que se calcula sumando un sueldo básico más una comisión. El sueldo básico es S/. 350.75. La comisión es igual al 5% del importe total vendido en el mes. Por ley, todo empleado está sujeto a un descuento igual al 15% del sueldo bruto. El sueldo neto se calcula restando el sueldo bruto menos el importe del descuento. Dado el importe total vendido en el mes, diseñe un algoritmo que imprima la boleta de un vendedor indicando el sueldo básico, la comisión, el sueldo bruto, el descuento y el sueldo neto.`
+          },
+          { 
+            id: 16, 
+            descripcion: 'Actividad 02', 
+            archivo: 'tareas/semana06/actividad02.dart', 
+            tipo: 'dart',
+            enunciado: `Una empresa expondrá sus productos en una feria. La empresa considera que el monto total de dinero a invertir estará distribuido de la siguiente manera: Alquiler de espacio en la feria 23%, Publicidad 7%, Transporte 26%, Servicios feriales 12%, Decoración 21%, Gastos varios 11%. Dado el monto total de dinero a invertir, diseñe un programa que determine cuánto gastará la empresa en cada rubro.`
+          },
+          { 
+            id: 17, 
+            descripcion: 'Actividad 03', 
+            archivo: 'tareas/semana06/actividad03.dart', 
+            tipo: 'dart',
+            enunciado: `Una tienda ha puesto en oferta la venta de camisas ofreciendo un descuento, por temporada de verano, denominado 7% + 7%. Los cálculos se efectúan de la siguiente manera: El importe de la compra es igual al producto del precio de la camisa por la cantidad de unidades adquiridas. El importe del primer descuento es igual al 7% del importe de la compra. El importe del segundo descuento es igual al 7% de lo que queda de restar el importe de la compra menos el importe del primer descuento. El importe del descuento total es igual a la suma de los dos descuentos anteriores. El importe a pagar es igual al importe de la compra menos el importe del descuento total. Dado el precio del producto y la cantidad de unidades adquiridas, diseñe un programa que determine el importe de la compra, el importe del primer descuento, el importe del segundo descuento, el importe del descuento total y el importe a pagar.`
+          },
+          { 
+            id: 18, 
+            descripcion: 'Actividad 04', 
+            archivo: 'tareas/semana06/actividad04.dart', 
+            tipo: 'dart',
+            enunciado: `El sueldo bruto de los empleados de una empresa se calcula sumando el sueldo básico más la bonificación por hijos. El sueldo básico se calcula multiplicando las horas trabajadas por la tarifa horaria. La tarifa horaria depende de la categoría del empleado de acuerdo con la siguiente tabla: Categoría A: S/. 45.0, Categoría B: S/. 37.5. La bonificación por hijos se calcula de acuerdo con la siguiente tabla: Hasta 3 hijos: S/. 40.5 por cada hijo, Más de 3 hijos: S/. 35.0 por cada hijo. Por ley, todo empleado está sujeto a un porcentaje de descuento sobre el sueldo bruto de acuerdo con la siguiente tabla: Sueldo bruto ≥ 3500: 13.5%, Sueldo bruto < 3500: 10.0%. Dadas la categoría y la cantidad de horas trabajadas de un empleado, diseñe un programa que determine el sueldo básico, el sueldo bruto, el descuento y el sueldo neto que le corresponden.`
+          }
+        ]
+
+        },
+
+        {
+
+          
+  semana: 7,
+  tareas: [
+    {
+      id: 19,
+      descripcion: 'Proyecto 01',
+      archivo: 'tareas/semana07/proyecto1.dart',
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> En una universidad, los alumnos están clasificados en cuatro categorías. A cada categoría le corresponde una pensión mensual distinta dada en la siguiente tabla:
+      <table>
+        <tr>
+          <th>Categoría</th>
+          <th>Pensión</th>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td>S/. 550</td>
+        </tr>
+        <tr>
+          <td>B</td>
+          <td>S/. 500</td>
+        </tr>
+        <tr>
+          <td>C</td>
+          <td>S/. 460</td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td>S/. 400</td>
+        </tr>
+      </table>
+      Semestralmente, la universidad efectúa rebajas en las pensiones de sus estudiantes a partir del segundo ciclo basándose en el promedio ponderado del ciclo anterior en porcentajes dados en la tabla siguiente:
+      <table>
+        <tr>
+          <th>Promedio</th>
+          <th>Descuento</th>
+        </tr>
+        <tr>
+          <td>0 a 13.99</td>
+          <td>No hay descuento</td>
+        </tr>
+        <tr>
+          <td>14.00 a 15.99</td>
+          <td>10 %</td>
+        </tr>
+        <tr>
+          <td>16.00 a 17.99</td>
+          <td>12 %</td>
+        </tr>
+        <tr>
+          <td>18.00 a 20.00</td>
+          <td>15 %</td>
+        </tr>
+      </table>
+      Dado el promedio ponderado y la categoría de un estudiante, diseñe un programa que determine cuánto de rebaja recibirá sobre su pensión actual y a cuánto asciende su nueva pensión.
+      `
+    },
+    {
+      id: 20,
+      descripcion: 'Proyecto 02',
+      archivo: 'tareas/semana07/proyecto2.dart',
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Una empresa evalúa a sus empleados bajo dos criterios: puntualidad y rendimiento. En cada caso, el empleado recibe un puntaje que va de 1 a 10, de acuerdo con los siguientes criterios:
+      <strong>Puntaje por puntualidad:</strong>
+      <table>
+        <tr>
+          <th>Minutos de tardanza</th>
+          <th>Puntaje</th>
+        </tr>
+        <tr><td>0</td><td>10</td></tr>
+        <tr><td>1 a 2</td><td>8</td></tr>
+        <tr><td>3 a 5</td><td>6</td></tr>
+        <tr><td>6 a 9</td><td>4</td></tr>
+        <tr><td>Más de 9</td><td>0</td></tr>
+      </table>
+      <strong>Puntaje por rendimiento:</strong>
+      <table>
+        <tr>
+          <th>Observaciones efectuadas</th>
+          <th>Puntaje</th>
+        </tr>
+        <tr><td>0</td><td>10</td></tr>
+        <tr><td>1</td><td>8</td></tr>
+        <tr><td>2</td><td>5</td></tr>
+        <tr><td>3</td><td>1</td></tr>
+        <tr><td>Más de 3</td><td>0</td></tr>
+      </table>
+      El puntaje total del empleado es la suma del puntaje por puntualidad más el puntaje por rendimiento. Basándose en el puntaje total, el empleado recibe una bonificación anual de acuerdo con la siguiente tabla:
+      <table>
+        <tr>
+          <th>Puntaje total</th>
+          <th>Bonificación</th>
+        </tr>
+        <tr><td>Menos de 11</td><td>S/. 2.5 por punto</td></tr>
+        <tr><td>11 a 13</td><td>S/. 5.0 por punto</td></tr>
+        <tr><td>14 a 16</td><td>S/. 7.5 por punto</td></tr>
+        <tr><td>17 a 19</td><td>S/. 10.0 por punto</td></tr>
+        <tr><td>20</td><td>S/. 12.5 por punto</td></tr>
+      </table>
+      Dados los minutos de tardanza y el número de observaciones de un empleado, diseñe un programa que determine el puntaje por puntualidad, el puntaje por rendimiento, el puntaje total y la bonificación que le corresponden.
+      `
+    },
+    {
+      id: 21,
+      descripcion: 'Proyecto 03',
+      archivo: 'tareas/semana07/proyecto3.dart',
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Una dulcería vende chocolates a los precios dados en la siguiente tabla:
+      <table>
+        <tr>
+          <th>Tipo de chocolate</th>
+          <th>Precio unitario</th>
+        </tr>
+        <tr><td>Primor</td><td>S/. 8.5</td></tr>
+        <tr><td>Dulzura</td><td>S/. 10.0</td></tr>
+        <tr><td>Tentación</td><td>S/. 7.0</td></tr>
+        <tr><td>Explosión</td><td>S/. 12.5</td></tr>
+      </table>
+      Como oferta, la tienda aplica un porcentaje de descuento sobre el importe de la compra, basándose en la cantidad de chocolates adquiridos, de acuerdo con la siguiente tabla:
+      <table>
+        <tr>
+          <th>Cantidad de chocolates</th>
+          <th>Descuento</th>
+        </tr>
+        <tr><td>&lt; 5</td><td>4.0%</td></tr>
+        <tr><td>≥ 5 y &lt; 10</td><td>6.5%</td></tr>
+        <tr><td>≥ 10 y &lt; 15</td><td>9.0%</td></tr>
+        <tr><td>≥ 15</td><td>11.5%</td></tr>
+      </table>
+      Adicionalmente, si el importe a pagar es no menor de S/. 250, la tienda obsequia 3 caramelos por cada chocolate; en caso contrario, obsequia 2 caramelos por cada chocolate.
+      Dado el tipo de chocolate y la cantidad de unidades adquiridas, diseñe un programa que determine el importe de la compra, el importe del descuento, el importe a pagar y la cantidad de caramelos de obsequio.
+      `
+    },
+    {
+      id: 22,
+      descripcion: 'Proyecto 04',
+      archivo: 'tareas/semana07/proyecto4.dart',
+      tipo: 'dart',
+      enunciado: `
+      <strong>Enunciado:</strong> Una tienda vende tres tipos de productos a los precios dados en la siguiente tabla:
+      <table>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+        </tr>
+        <tr><td>P1</td><td>S/. 15.0</td></tr>
+        <tr><td>P2</td><td>S/. 17.5</td></tr>
+        <tr><td>P3</td><td>S/. 20.0</td></tr>
+      </table>
+      Como oferta, la tienda ofrece un regalo de acuerdo con la siguiente tabla:
+      <table>
+        <tr>
+          <th>Unidades adquiridas</th>
+          <th>Regalo</th>
+        </tr>
+        <tr><td>Menos de 26</td><td>Un lapicero</td></tr>
+        <tr><td>26 a 50</td><td>Un cuaderno</td></tr>
+        <tr><td>Más de 50</td><td>Una agenda</td></tr>
+      </table>
+      Dado el tipo de producto y la cantidad de unidades adquiridas, diseñe un programa que determine el importe a pagar y el regalo.
+      `
+    }
+  ]
+}
+
+
+    ]
+
+    function generarTareas() {
+      const container = document.getElementById('tareas-container');
+      tareasData.forEach(semana => {
+        const semanaElement = document.createElement('div');
+        semanaElement.className = 'semana card';
+        semanaElement.innerHTML = `
+          <div class="semana-titulo">
+            <span>Semana ${semana.semana}</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="tareas">
+            ${semana.tareas.map(tarea => `
+              <div class="tarea">
+                <input type="checkbox" id="tarea-${tarea.id}">
+                <div class="tarea-contenido">
+                  <label for="tarea-${tarea.id}">${tarea.descripcion}</label>
+                  <p>${tarea.enunciado}</p>
+                  <button class="btn-ver-contenido" onclick="mostrarContenido('${tarea.archivo}', '${tarea.tipo}', ${tarea.id})">Ver contenido</button>
+                  <button class="btn-descargar" onclick="descargarArchivo('${tarea.archivo}')">Descargar</button>
+                  <button class="btn-ver-github" onclick="verEnGitHub('${tarea.archivo}')">Ver en GitHub</button>
+                </div>
+              </div>
+              <div id="contenido-${tarea.id}" style="display:none;"></div>
+            `).join('')}
+            <div class="progreso-semana">
+              <div class="progreso-barra" style="width: 0%"></div>
+            </div>
+          </div>
+        `;
+        container.appendChild(semanaElement);
+      });
+
+
+      // Funcionalidad de acordeón
+      const titulos = document.querySelectorAll('.semana-titulo');
+      titulos.forEach(titulo => {
+        titulo.addEventListener('click', () => {
+          const tareas = titulo.nextElementSibling;
+          const icono = titulo.querySelector('i');
+          if (tareas.style.display === 'block') {
+            tareas.style.display = 'none';
+            icono.className = 'fas fa-chevron-down';
+          } else {
+            tareas.style.display = 'block';
+            icono.className = 'fas fa-chevron-up';
+          }
+        });
+      });
+
+      // Marcar tareas como completadas y actualizar progreso
+      const checkboxes = document.querySelectorAll('.tarea input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+          const tarea = e.target.closest('.tarea');
+          const semana = e.target.closest('.semana');
+          if (e.target.checked) {
+            tarea.classList.add('tarea-completada');
+          } else {
+            tarea.classList.remove('tarea-completada');
+          }
+          actualizarProgreso(semana);
+        });
+      });
+    }
+
+    function actualizarProgreso(semana) {
+      const totalTareas = semana.querySelectorAll('.tarea').length;
+      const tareasCompletadas = semana.querySelectorAll('.tarea-completada').length;
+      const porcentaje = (tareasCompletadas / totalTareas) * 100;
+      const barra = semana.querySelector('.progreso-barra');
+      barra.style.width = `${porcentaje}%`;
+    }
+
+    function mostrarContenido(archivo, tipo, id) {
+      const baseUrl = 'https://raw.githubusercontent.com/Zerox30-dev/AplicacionesMoviles.github.io/main/';
+      const url = baseUrl + archivo;
+      const contenidoDiv = document.getElementById(`contenido-${id}`);
+      
+      if (tipo === 'pdf') {
+        window.open(url, '_blank');
+      } else if (tipo === 'docx') {
+        alert('Los archivos DOCX no se pueden visualizar directamente en el navegador. Por favor, descarga el archivo para verlo.');
+      } else if (tipo === 'dart') {
+        fetch(url)
+          .then(response => response.text())
+          .then(data => {
+            contenidoDiv.innerHTML = `<pre class="tarea-contenido-visible"><code>${data}</code></pre>`;
+            contenidoDiv.style.display = contenidoDiv.style.display === 'none' ? 'block' : 'none';
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            contenidoDiv.innerHTML = '<p>Error al cargar el contenido. Por favor, intenta descargarlo.</p>';
+            contenidoDiv.style.display = 'block';
+          });
+      }
+    }
+
+    function descargarArchivo(archivo) {
+      const baseUrl = 'https://github.com/Zerox30-dev/AplicacionesMoviles.github.io/raw/main/';
+      const url = baseUrl + archivo;
+      window.open(url, '_blank');
+    }
+
+    function verEnGitHub(archivo) {
+      const baseUrl = 'https://github.com/Zerox30-dev/AplicacionesMoviles.github.io/blob/main/';
+      const url = baseUrl + archivo;
+      window.open(url, '_blank');
+    }
+
+    // Generar tareas al cargar la página
+    window.addEventListener('load', generarTareas);
+  </script>
+</body>
+</html>
